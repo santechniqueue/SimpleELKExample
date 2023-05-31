@@ -10,8 +10,8 @@ simple_formatter = logging.Formatter(
 handler = ModifiedTCPLogstashHandler(
     host='localhost',
     port=5000,
-    message_type='views',
-    tags=['requests'],
+    message_type='log_example',
+    tags=['example'],
     fqdn=False,
     version=1,
 )
