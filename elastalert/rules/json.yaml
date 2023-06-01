@@ -1,0 +1,26 @@
+name: "Json alert"
+
+index: "json-logs-*"
+
+type: "any"
+realert:
+  seconds: 0
+
+filter:
+  - query:
+      query_string:
+        query: "level: ERROR"
+
+timestamp_field: "@timestamp"
+alert_subject: "TEST ELK ERROR ALERTING ☃"
+alert_text: "Occurred at {0}. Error message was: {1}"
+alert_text_args:
+  - "@timestamp"
+  - "message"
+
+
+alert:
+  - "slack"
+slack_webhook_url: ${SLACK_WEBHOOK_URL}
+slack_emoji_override: ":kissing_cat:"
+slack_msg_color: "warning"
